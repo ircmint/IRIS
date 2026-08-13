@@ -1,1 +1,3 @@
-# MINT
+# IRIS - Infrastructure-aware Multimodal Reasoning for Road Safety Auditing and Regulatory Compliance
+
+It Is a low-cost, multimodal road-safety auditing framework designed to complement conventional manual road-safety audits. It combines road-scene video, inertial measurements, GPS, and regulatory knowledge to connect observed road and rider events with infrastructure conditions and applicable IRC provisions. The goal is to turn inexpensive mobile sensing into structured, evidence-backed audit information that can help engineers and authorities identify, verify, and prioritize road-safety interventions.
