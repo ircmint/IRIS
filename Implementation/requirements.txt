@@ -1,0 +1,53 @@
+# IRASTE Pilot Study — Python Requirements
+# Install with: pip install -r requirements.txt
+#
+# Tested on: Python 3.10–3.12, CUDA 12.1, Ada HPC (gnode025/gnode027/gnode050)
+#
+# NOTE: PyTorch must be installed BEFORE this file, matching your CUDA version:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# ── Core ML / Deep Learning ──────────────────────────────────────────────────
+torch>=2.1.0                    # deep learning backbone (install separately with CUDA)
+torchvision>=0.16.0             # image transforms, pretrained vision models
+
+# ── Vision-Language Models ────────────────────────────────────────────────────
+transformers>=4.46.0            # Qwen2-VL, Qwen2.5-VL, InternVL3, PaliGemma, LLaVA, Florence-2
+peft>=0.12.0                    # LoRA / QLoRA fine-tuning (LoraConfig, PeftModel, get_peft_model)
+qwen-vl-utils>=0.0.8            # Qwen2-VL / Qwen2.5-VL frame/video preprocessing utilities
+accelerate>=0.30.0              # device_map="auto", multi-GPU / CPU offload
+bitsandbytes>=0.43.0            # 4-bit / 8-bit quantization (QLoRA nf4 config)
+
+# ── Video & Image Processing ──────────────────────────────────────────────────
+opencv-python>=4.8.0            # cv2: frame extraction, video reading, image transforms
+Pillow>=10.0.0                  # PIL: image loading and resizing for VLM inputs
+decord>=0.6.0                   # fast GPU-accelerated video decoding (VideoReader)
+
+# ── Data Science / Numerics ───────────────────────────────────────────────────
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0                   # Butterworth bandpass filter (signal.butter, sosfiltfilt)
+scikit-learn>=1.3.0             # train/val split, metrics (sklearn)
+
+# ── RAG & Knowledge Graph ─────────────────────────────────────────────────────
+chromadb>=0.4.0                 # vector database for IRC-35/IRC-67 clause retrieval
+sentence-transformers>=2.7.0    # all-MiniLM-L6-v2 embeddings for clause similarity search
+pdfplumber>=0.10.0              # PDF parsing for IRC document ingestion
+
+# ── NLP Metrics ───────────────────────────────────────────────────────────────
+rouge-score>=0.1.2              # ROUGE-L for generated description evaluation
+nltk>=3.8.0                     # BLEU, tokenization utilities
+pycocoevalcap>=1.2              # CiDEr scorer (requires pycocotools)
+
+# ── Visualization & Reporting ─────────────────────────────────────────────────
+matplotlib>=3.7.0               # plots, radar charts, ablation result visualization
+networkx>=3.1                   # knowledge graph construction (clause co-occurrence graphs)
+pyvis>=0.3.2                    # interactive HTML graph visualization
+
+# ── Object Detection (Day-2 Zero-Shot) ───────────────────────────────────────
+ultralytics>=8.0.0              # YOLOv8 (used in detector utilities)
+
+# ── Geospatial ────────────────────────────────────────────────────────────────
+pyproj>=3.6.0                   # GPS coordinate projection (lat/lon → meters)
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+tqdm>=4.66.0                    # progress bars for training loops and batch inference
